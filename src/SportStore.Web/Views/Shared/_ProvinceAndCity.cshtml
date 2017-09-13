@@ -1,0 +1,81 @@
+﻿
+<div class="form-group">
+    <label class="col-md-4 control-label">Province</label>
+    <div class="col-md-4">
+        <select id="ProvinceId" class="form-control">
+            <option>SelectProvince</option>
+
+        </select>
+
+    </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+    <label class="col-md-4 control-label" >City</label>
+    <div class="col-md-4">
+        <select  class="form-control" id="CityId"  name="CityId">
+            <option>Select City</option>
+        </select>
+    </div>
+</div>
+
+
+
+<script>
+
+
+    $(document).ready(function () {
+
+
+         //set Proviances
+        var action = '@Url.Action("GetProviances", "Order")';
+
+        $.ajax({
+            url: action,
+            type: 'Json',
+            data: {},
+
+            success: function (response) {
+                var obj = $.parseJSON(response)
+                debugger;
+                for (index in obj) {
+                    $('#ProvinceId').append('<option value=' + obj[index].Id + '>' + obj[index].Name + '</option>');
+                    }
+            },
+            error: function () {
+                alert('Error');
+            }
+
+        });
+
+
+    //Set Cities
+        $("#ProvinceId").change(function () {
+            debugger;
+            var PID = $(this).find("option:selected").val();
+             var action = '@Url.Action("GetCitiesByProvianceId", "Order")';
+            debugger;
+            $.ajax({
+                url: action,
+                type: 'Json',
+                data: { provianceId: PID },
+
+                success: function (response) {
+                    debugger;
+                    var obj = $.parseJSON(response)
+                    $('#CityId').empty();
+                    for (index in obj) {
+                        $('#CityId').append('<option value=' + obj[index].Id + '>' + obj[index].Name + '</option>');
+                    }
+                },
+                error: function () {
+                    alert('Error');
+                }
+
+            });
+
+        });
+
+    });
+</script>

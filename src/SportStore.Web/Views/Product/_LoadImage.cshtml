@@ -1,0 +1,18 @@
+﻿@model Product
+
+
+
+@{if (Model.ImageId!= 0)
+    {
+        
+            <img src="@Url.Action("GetImage", "Image", new { imageId = Model.ImageId })" style="height:150px; width: auto" />
+      
+    }
+    else
+    {
+       
+            <img src="~/images/empty_img.png" style="height: auto; width: auto" />
+        
+
+    }
+}

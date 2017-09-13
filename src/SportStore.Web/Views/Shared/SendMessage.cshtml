@@ -1,0 +1,53 @@
+﻿@model Message
+
+<div class="well bs-component">
+
+    <form class="form-horizontal" asp-action="SendMessage" asp-controller="Home" method="post">
+        <fieldset>
+            <legend>Send Message </legend>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label for="inputEmail" class="col-md-4 control-label">Your Name</label>
+                <div><span asp-validation-for=@Model.Name class="text-danger"></span></div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" asp-for="@Model.Name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail" class="col-md-4 control-label">Subject</label>
+                <div><span asp-validation-for="@Model.Subject" class="text-danger"></span></div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" asp-for="@Model.Subject">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="inputPassword" class="col-md-4 control-label">Message</label>
+                <div><span asp-validation-for="@Model.body" class="text-danger"></span></div>
+                <div class="col-md-4">
+                    <textarea class="form-control" asp-for="@Model.body"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword" class="col-md-4 control-label"></label>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-success">Send</button>
+                </div>
+            </div>
+
+
+        </fieldset>
+    </form>
+
+</div>
+
+
+@section scripts{
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}

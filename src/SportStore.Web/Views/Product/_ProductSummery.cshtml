@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SportStore.Model.Domain.Product>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-4 col-sm-6">
+            <div class="thumbnail">
+            
+                    <a href="@Url.Action("GetProduct","Product",new { id = item.ID })">
+                    @Html.Partial("_LoadImage", item)
+                    </a>
+
+
+                    <a href="@Url.Action("GetProduct","Product")"><strong>@item.ProductName</strong></a>
+
+                    <p>@item.ShortDescription</p>
+                    <hr class="line">
+                    <div class="row">
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <h5><span class="label label-default">@item.ProductPrice$</span></h5>
+                            <button name="btnAddToCart" class="btn btn-primary" onclick="addtocart(@item.ID)"> Add Item</button>
+                        </div>
+
+                    </div>
+</div>
+        </div>
+
+      
+     }
+</div>
+
+<script type="text/javascript">
+
+
+                  function addtocart(id) {
+
+                    var action='@Url.Action("AddToCart", "Order")';
+                    $.ajax({
+                        url: action,
+                        type: 'Json',
+                        data: { ProductId: id },
+                        success: function (response) {
+                            //I want to use this response  to be displayed on the same page.
+                            alert('success');
+                        },
+                        error: function () { // if error occured
+                            alert('Error:');
+                        }
+                    });
+
+                  }
+
+                   
+
+</script>

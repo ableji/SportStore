@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Product>
+
+
+<div id="products">
+    <table id="tblProducts" class="table table-bordered table-striped ">
+
+        <thead>
+            <tr>
+
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Reamaining</th>
+                <th>Insert Date</th>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{foreach (var item in Model)
+                {
+                    <tr>
+                        
+                        <td>@item.ProductName</td>
+                        @{
+                            if (item.ProductCategory != null)
+                            {<td>@item.ProductCategory.Name</td>}
+                            
+                            else
+                            {<td>"Not Set"</td>}
+                        
+                        }
+
+
+                        <td>@item.ProductPrice</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.InsertedDate</td>
+                        <td>
+                            <a class="btn btn-danger btn-sm" role="button" onclick="removeProduct(@item.ID)">Remove</a>
+                            <a class="btn btn-info btn-sm" role="button" asp-action="EditProduct" asp-controller="Admin" asp-route-id="@item.ID">Edit</a>
+                        </td>
+
+                    </tr>
+                }
+
+
+            }
+        </tbody>
+
+    </table>
+
+</div>
+
+<script type="text/javascript">
+
+
+    function removeProduct(id) {
+
+        debugger;
+
+        var action = '@Url.Action("RemoveProduct", "Admin")';
+        $.ajax({
+            url: action,
+            type: 'Json',
+            data: { productID: id },
+
+            success: function (response) {
+
+                $('#products').html(response);
+            },
+            error: function () { 
+                alert('Error');
+            }
+
+
+        });
+    }
+
+</script>
+
+
+

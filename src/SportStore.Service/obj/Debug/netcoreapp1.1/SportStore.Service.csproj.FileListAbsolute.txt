@@ -1,0 +1,11 @@
+E:\Ablfzl\Projects\SportStore\SportStore.Service\bin\Debug\netcoreapp1.1\SportStore.Service.deps.json
+E:\Ablfzl\Projects\SportStore\SportStore.Service\bin\Debug\netcoreapp1.1\SportStore.Service.dll
+E:\Ablfzl\Projects\SportStore\SportStore.Service\obj\Debug\netcoreapp1.1\SportStore.Service.csprojResolveAssemblyReference.cache
+E:\Ablfzl\Projects\SportStore\SportStore.Service\obj\Debug\netcoreapp1.1\SportStore.Service.csproj.CoreCompileInputs.cache
+E:\Ablfzl\Projects\SportStore\SportStore.Service\obj\Debug\netcoreapp1.1\SportStore.Service.AssemblyInfoInputs.cache
+E:\Ablfzl\Projects\SportStore\SportStore.Service\obj\Debug\netcoreapp1.1\SportStore.Service.AssemblyInfo.cs
+E:\Ablfzl\Projects\SportStore\SportStore.Service\bin\Debug\netcoreapp1.1\SportStore.Service.pdb
+E:\Ablfzl\Projects\SportStore\SportStore.Service\bin\Debug\netcoreapp1.1\SportStore.Model.dll
+E:\Ablfzl\Projects\SportStore\SportStore.Service\bin\Debug\netcoreapp1.1\SportStore.Model.pdb
+E:\Ablfzl\Projects\SportStore\SportStore.Service\obj\Debug\netcoreapp1.1\SportStore.Service.dll
+E:\Ablfzl\Projects\SportStore\SportStore.Service\obj\Debug\netcoreapp1.1\SportStore.Service.pdb

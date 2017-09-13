@@ -1,0 +1,6 @@
+﻿@model IEnumerable<SportStore.Model.Domain.Product>
+<h3>
+    <a asp-action="CreateProduct" asp-controller="Admin">New Product</a>
+</h3>
+
+@Html.Partial("_LoadProducts",Model)

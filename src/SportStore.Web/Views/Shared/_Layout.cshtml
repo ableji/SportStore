@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    @*jquery*@
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    @*Bootstrap*@
+    <link href="~/css/Bootstrap-Material.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    @*FA*@
+    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    @RenderSection("Header", false)
+
+
+</head>
+
+<body>
+
+
+    <div class="navbar navbar-inverse navbar-static-top">
+        
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/" class="navbar-brand">SportStore </a>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                 
+                        <ul class="nav navbar-nav">
+
+                            @await  Component.InvokeAsync("Cart")
+                           
+                            <li><a asp-action="SendMessage" asp-controller="Home"><i class="fa fa-send"></i> SendMessage</a></li>
+
+                            @await Component.InvokeAsync("User")
+
+                        </ul>
+
+
+                 
+                     
+
+                    <form class="navbar-form navbar-right" asp-action="Search" asp-controller="Product" role="search">
+                        <div class="form-group">
+                            <input type="text" name="key" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </form>
+
+                </div>
+            </div>
+      
+    </div>
+
+    <div class="container">
+        <div class="col-md-12">
+            @RenderBody()
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("input.input-validation-error")
+                .closest(".form-group").addClass("has-error");
+        });
+    </script>
+
+        @RenderSection("Scripts", false)
+</body>
+</html>

@@ -1,0 +1,177 @@
+﻿
+@model SportStore.Web.Areas.Admin.Models.DashboardViewModel
+
+
+<div class="col-md-3">
+
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-6">
+                    <i class="fa fa-user fa-5x"></i>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <p class="announcement-heading">@Model.UserCount</p>
+                    <p class="announcement-text">Users</p>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer announcement-bottom">
+                <div class="row">
+                    <div class="col-xs-6">
+                        View
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <i class="fa fa-arrow-circle-right"></i>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+<div class="col-md-3">
+
+
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-6">
+                    <i class="fa fa-barcode fa-5x"></i>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <p class="announcement-heading">@Model.ProductCount</p>
+                    <p class="announcement-text">Products</p>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer announcement-bottom">
+                <div class="row">
+                    <div class="col-xs-6">
+                        View
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <i class="fa fa-arrow-circle-right"></i>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+
+<div class="col-md-3">
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-6">
+                    <i class="fa fa-shopping-cart fa-5x"></i>
+                </div>
+                <div class="col-xs-6 text-right">
+                   <p class="announcement-heading">@Model.OrderCount</p>
+                    <p class="announcement-text">Orders</p>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer announcement-bottom">
+                <div class="row">
+                    <div class="col-xs-6">
+                        View
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <i class="fa fa-arrow-circle-right"></i>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+
+<div class="col-md-3">
+
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-6">
+                    <i class="fa fa-comments fa-5x"></i>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <p class="announcement-heading">@Model.MessageCount</p>
+                    <p class="announcement-text">Messages</p>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer announcement-bottom">
+                <div class="row">
+                    <div class="col-xs-6">
+                        View
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <i class="fa fa-arrow-circle-right"></i>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+<div class="col-md-12">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">New Messages</h3>
+        </div>
+        <div class="panel-body">
+
+
+            <table id="tblCart" class="table table-bordered table-sm ">
+
+                <thead>
+                    <tr>
+
+                        <th>From</th>
+                        <th>Subject</th>
+                        <th>Date</th>
+                        <td>Message</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                    foreach (var item in Model.NewMessages)
+                    {
+                            <tr>
+
+                                <td>@item.Name</td>
+                                <td>@item.Subject</td>
+                                <td>@item.SendDate.ToString()</td>
+                                <td>@item.body</td>
+
+                            </tr>
+                    }
+
+                    }
+                </tbody>
+
+            </table>
+
+
+
+        </div>
+    </div>
+</div>
+
+    
+
+
+

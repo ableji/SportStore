@@ -1,0 +1,6 @@
+﻿@model IEnumerable<SportStore.Model.Domain.CartItem>
+<h1>Cart Items</h1>
+<div asp-validation-summary="All" class="text-danger"></div>
+@Html.Partial("_Loadcart", Model)
+
+<a class="btn btn-primary" asp-action="CheckOut" asp-controller="Order">CheckOut</a>

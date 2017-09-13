@@ -1,0 +1,169 @@
+﻿
+    
+
+    
+    <div class="panel panel-primary col-md-6">
+        <div class="panel-heading">
+            <h3 class="panel-title">Categories</h3>
+        </div>
+        <div class="panel-body">
+            <div id="tree" class="col-md-12"></div>
+        </div>
+    </div>
+
+
+
+    <div class="well col-md-6" >
+       
+            <button id="expandAll" type="button" class="btn btn-default">expandAll</button>
+            <button id="collapseAll" type="button" class="btn btn-primary">collapseAll</button>
+            <button id="save" type="button" class="btn btn-success">save</button>
+            <button id="remove" type="button" class="btn btn-danger">Remove</button>
+            <input type="text" id="nodeName" class="form-control input-md" />
+     
+
+
+       </div>
+      
+
+
+  
+
+
+   
+
+
+
+
+@section scripts{
+<script src="~/lib/bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
+<link href="~/lib/bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet" />
+
+<script>
+    $(document).ready(function () {
+        
+        var action = '@Url.Action("GetProductCategories", "Admin")';
+
+        var vv = '';
+        getTree();
+
+        function getTree()
+        {
+
+            $.ajax({
+                url: action,
+                type: 'Json',
+
+                success: function (data) {
+
+                    $('#tree').treeview({
+                        data: data,
+                        expandIcon: "fa fa-chevron-circle-right",
+                        collapseIcon: "fa fa-chevron-circle-down",
+                    });
+
+                    return true;
+
+                },
+                    error: function () {
+                    alert("foo bar");
+
+                }
+
+            });
+
+        }
+
+
+
+        $("#expandAll").click(function () {
+            $('#tree').treeview('expandAll', { silent: true });
+          });
+
+
+        $("#collapseAll").click(function () {
+            $('#tree').treeview('collapseAll', { silent: true });
+        });
+
+
+        function getSelected()
+        {
+            var node = $('#tree').treeview('getSelected');
+            return node[0].id;
+        }
+
+
+        $("#save").click(function () {
+            var action = '@Url.Action("CreateProductCategory", "Admin")';
+            var Parentid = getSelected();
+            var Name = $("#nodeName").val();
+            $.ajax({
+            url: action,
+            type: 'Json',
+            data: { paretnID: Parentid, name: Name },
+
+            success: function (response) {
+
+                if (response)
+                {
+                    $("#nodeName").val("");
+                    getTree();
+                }
+                else
+                {
+                    alert("An error accoured");
+                }
+
+            },
+            error: function () {
+                debugger;
+                alert('Error');
+            }
+
+
+        });
+
+        });
+
+
+
+        $("#remove").click(function () {
+            var action = '@Url.Action("DeleteProductCategory", "Admin")';
+            var ID = getSelected();
+
+            $.ajax({
+            url: action,
+            type: 'Json',
+            data: { id:ID },
+
+            success: function (response) {
+
+                if (response)
+                {
+                    getTree();
+                }
+                else
+                {
+                    alert("An error accoured");
+                }
+
+            },
+            error: function () {
+                debugger;
+                alert('Error');
+            }
+
+
+        });
+
+        });
+
+
+
+    });
+
+
+</script>
+}
+
+

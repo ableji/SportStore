@@ -1,0 +1,77 @@
+﻿@model SportStore.Model.Domain.AppUser
+
+<div class="well bs-component">
+    <div class="tab-pane active in" id="home">
+
+        <form class="form-horizontal" id="infoForm">
+
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>Account Info</legend>
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="textinput">Email</label>
+                    <div class="col-md-4">
+                        <input asp-for="@Model.Email" type="email" class="form-control input-md">
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="textinput">PhoneNumber</label>
+                    <div class="col-md-4">
+                        <input asp-for="@Model.PhoneNumber" type="number" class="form-control input-md">
+
+                    </div>
+                </div>
+
+            
+              @Html.Partial("_ProvinceAndCity");
+
+                <!-- Textarea -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">RestOfAddress</label>
+                    <div class="col-md-4">
+                        <textarea class="form-control" asp-for="@Model.RestOfAddress"></textarea>
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="UpdateAddress"></label>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    $("#infoForm").submit(function (e) {
+        e.preventDefault();
+        var Action = '@Url.Action("UpdateInfo","User")';
+
+        $.ajax({
+            type: "POST",
+            url: Action,
+            data: $("#infoForm").serialize(),
+            success: function (data) {
+                alert(data);
+            }
+        });
+
+
+    });
+
+</script>

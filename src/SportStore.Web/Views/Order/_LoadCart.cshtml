@@ -1,0 +1,72 @@
+﻿@model IEnumerable<SportStore.Model.Domain.CartItem>
+
+<div id="cart">
+    <table id="tblCart" class="table table-bordered ">
+
+        <thead>
+            <tr>
+
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <td>Giftwrap?</td>
+                <th>TotalPrice</th>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@item.Product.ProductName</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Product.ProductPrice</td>
+                        <td></td>
+                        <td>@item.TotalPrice</td>
+                        <td><a class="btn btn-danger btn-sm" role="button" onclick="removeFromCart(@item.Product.ID)">Remove</a></td>
+
+
+
+
+                    </tr>
+                }
+                <tr>
+                    <td colspan="3">Total Amount:</td>
+                    <td>@Model.Sum(x => x.TotalPrice)</td>
+                </tr>
+
+            }
+        </tbody>
+
+    </table>
+</div>
+
+
+<script type="text/javascript">
+
+
+    function removeFromCart(id) {
+
+        debugger;
+
+        var action = '@Url.Action("RemoveFromCart", "Order")';
+        $.ajax({
+            url: action,
+            type: 'Json',
+            data: { ProductId: id },
+
+            success: function (response) {
+                //I want to use this response  to be displayed on the same page.
+                $('#cart').html(response);
+            },
+            error: function () { // if error occured
+                alert('Error');
+            }
+
+
+        });
+    }
+
+</script>

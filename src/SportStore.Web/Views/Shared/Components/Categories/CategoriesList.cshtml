@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ProductCategory>
+
+
+<div class='list-group'>
+    
+        @foreach (var category in Model)
+        {
+             
+            <a class="list-group-item" href="/Product/Index?categoryId=@category.ID&ItemsPerPage=@ViewBag.ItemsPerPage">
+                <b>@category.Name</b>
+            </a>
+                
+        }
+   
+</div>

@@ -1,0 +1,147 @@
+﻿@model Product
+
+
+@section header {
+    <script src="~/lib/tinymce/tinymce.js"></script>
+
+}
+
+
+
+<form class="form-horizontal" asp-action="EditProduct" asp-controller="Admin" method="post">
+    <fieldset>
+
+
+        <!-- change col-sm-N to reflect how you would like your column spacing (http://getbootstrap.com/css/#forms-control-sizes) -->
+        <!-- Form Name -->
+        <legend>EditProduct</legend>
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+       
+        <input type="hidden" asp-for="@Model.ID" />
+        <input type="hidden" asp-for="@Model.ImageId" />
+
+        <!-- Text input http://getbootstrap.com/css/#forms -->
+        <div class="form-group">
+            <label for="" class="control-label col-sm-2">Name</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" asp-for=@Model.ProductName>
+
+            </div>
+        </div>
+
+        
+        <!-- Text input http://getbootstrap.com/css/#forms -->
+        <div class="form-group">
+            <label for="" class="control-label col-sm-2">Price</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" asp-for=@Model.ProductPrice>
+
+            </div>
+        </div>
+
+
+        <!-- Quantity -->
+        <div class="form-group">
+            <label for="" class="control-label col-sm-2">Quantity</label>
+            <div><span asp-validation-for=@Model.Quantity class="text-danger"></span></div>
+            <div class="col-md-4">
+                <input type="number" class="form-control" asp-for=@Model.Quantity>
+
+            </div>
+        </div>
+
+
+
+        <!-- Short Description -->
+        <div class="form-group">
+            <label for="" class="control-label col-sm-2">Short Description</label>
+            <div><span asp-validation-for=@Model.ShortDescription class="text-danger"></span></div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" asp-for=@Model.ShortDescription>
+
+            </div>
+        </div>
+
+
+        <!-- Category -->
+        <div class="form-group">
+            <label for="" class="control-label col-sm-2">Category</label>
+            <div class="col-md-4">
+                <select asp-for="@Model.ProductCagegoryID" class="form-control">
+                    <option>Select Category</option>
+                </select>
+            </div>
+        </div>
+
+
+        <!-- Textarea http://getbootstrap.com/css/#textarea -->
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="">Description</label>
+            <div class="col-md-10">
+                <textarea class="form-control" rows="3" asp-for=@Model.ProductDescription></textarea>
+
+            </div>
+        </div>
+
+        <!-- Button http://getbootstrap.com/css/#buttons -->
+        <div class="form-group">
+            <label class="control-label col-sm-2" for=""></label>
+            <div class="col-md-4">
+                <button type="submit" id="" name="" class="btn btn-success" aria-label="">Edit</button>
+
+            </div>
+        </div>
+
+
+    </fieldset>
+</form>
+
+
+@section scripts{
+
+<script>
+
+
+    $(document).ready(function () {
+
+        tinymce.init({
+            selector: 'textarea',
+            height: 500,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+            ],
+            toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+
+        });
+
+        //set Proviances
+        var action = '@Url.Action("GetProductCategoriess", "Admin")';
+
+        $.ajax({
+            url: action,
+            type: 'Json',
+            data: {},
+
+            success: function (response) {
+
+                debugger;
+
+                var obj = $.parseJSON(response);
+                for (index in obj) {
+                    $('#ProductCagegoryID').append('<option value=' + obj[index].ID + '>' + obj[index].Name + '</option>');
+                }
+            },
+            error: function () {
+                alert('Error');
+            }
+
+        });
+
+    });
+
+</script>
+}

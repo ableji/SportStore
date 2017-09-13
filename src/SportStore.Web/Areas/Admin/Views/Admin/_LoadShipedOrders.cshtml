@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Order>
+
+
+<table id="tblOrder" class="table table-bordered ">
+
+    <thead>
+        <tr>
+
+            <th>Name</th>
+            <th>PhoneNumber</th>
+            <th>Address</th>
+            <th>OrderDate</th>
+            <th colspan="2">Details</th>
+         
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var order in Model)
+            {
+
+                <tr style="background-color:whitesmoke">
+
+                    <td></td>
+
+                    <td>@*order.User.PhoneNumber*@</td>
+                    <td>@*@order.User.CityId*@</td>
+                    <td>@*@order.InsertedDate.ToString("yyyy/MM/dd")*@</td>
+                    <td>Product</td>
+                    <td>Quantiry</td>
+                   
+
+                </tr>
+
+
+                foreach (var item in order.CartItems)
+                {
+                    <tr>
+                        <td colspan="4"></td>
+                        <td>@item.Product.ProductName</td>
+                        <td>@item.Quantity</td>
+                    </tr>
+
+                }
+
+
+            }
+
+        }
+    </tbody>
+
+</table>

@@ -1,0 +1,57 @@
+﻿@model Product
+@{ Layout = "_Layout"; }
+
+@section header{
+
+<link href="~/ProductDetail.css" rel="stylesheet" />
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default  panel--styled">
+                <div class="panel-body">
+                    <div class="col-md-12 panelTop">
+                        <div class="col-md-4">
+                            
+
+                            @{if (Model.ImageId != 0)
+                                {
+                                    <img  class="thumbnail" src="@Url.Action("GetImage", "Image", new { imageId = Model.ImageId })" style="height:350px; width: 350px" />
+                                }
+                                else
+                                {
+                                    <img src="~/images/empty_img.png" style="height: 350px; width: 350px" />
+                                }
+                            }
+
+
+                        </div>
+                        <div class="col-md-8">
+                            <h1>@Model.ProductName</h1>
+                            <h3>@Model.ShortDescription</h3>
+                        
+                            <h4> <span class="label label-info">@Model.ProductPrice$</span></h4>
+
+                            <button class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Add to Cart</button>
+
+                        </div>
+
+                       
+                       
+                        
+                    </div>
+                 
+                    <div class="col-md-12 panelBottom">
+                        <hr />
+                        <p>@Html.Raw(Model.ProductDescription)</p>
+                    </div>
+            </div>
+
+          
+        </div>
+    </div>
+
+</div>
+</div>

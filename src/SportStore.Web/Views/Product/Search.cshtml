@@ -1,0 +1,6 @@
+﻿@model IEnumerable<SportStore.Model.Domain.Product>
+
+<h1><span class="label label-info">@ViewBag.count Result for "@ViewBag.key"</span></h1>
+<hr />
+
+@Html.Partial("_ProductSummery", Model);

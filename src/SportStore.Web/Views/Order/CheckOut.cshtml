@@ -1,0 +1,129 @@
+﻿@*@model SportStore.Model.Domain.Order
+
+@section scripts
+{
+    <script>
+    $(document).ready(function () {
+
+        //set Proviances
+        var action = '@Url.Action("GetProviances", "Order")';
+        
+        $.ajax({
+            url: action,
+            type: 'Json',
+            data: {},
+
+            success: function (response) {
+                var obj = $.parseJSON(response)
+                debugger;
+                for (index in obj) {
+                    $('#ProvinceID').append('<option value=' + obj[index].ID + '>' + obj[index].Name + '</option>');
+                    }
+            },
+            error: function () {
+                alert('Error');
+            }
+
+        });
+
+
+        //Set Cities
+        $("#ProvinceID").change(function () {
+            debugger;
+            var PID = $(this).find("option:selected").val();
+             var action = '@Url.Action("GetCitiesByProvianceId", "Order")';
+            debugger;
+            $.ajax({
+                url: action,
+                type: 'Json',
+                data: { provianceId: PID },
+
+                success: function (response) {
+                    var obj = $.parseJSON(response)
+                    $('#CityID').empty();
+                    for (index in obj) {
+                        $('#CityID').append('<option value=' + obj[index].ID + '>' + obj[index].Name + '</option>');
+                        }
+                },
+                error: function () {
+                    alert('Error');
+                }
+
+        });
+
+        });
+
+
+    });
+
+
+    </script>
+}
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<div>
+    <form class="form-horizontal" asp-action="CheckOut" asp-controller="Order" method="post">
+        <fieldset>
+
+            <!-- CheckOut -->
+            <h1>CheckOut</h1>
+
+            <!-- Proviance -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="selectbasic">Proviance</label>
+                <div class="col-md-4">
+                    <select asp-for="@Model.ProvinceID" class="form-control">
+                        <option>Select Province</option>
+                    </select>
+                </div>
+            </div>
+
+            <script>
+
+
+            </script>
+
+            <!-- City -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="selectbasic">City</label>
+                <div class="col-md-4">
+                    <select data-provide="typeahead" asp-for="@Model.CityID" class="form-control"></select>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textarea">Address</label>
+                <div class="col-md-4">
+                    <textarea class="form-control" asp-for="@Model.Address" placeholder="Rest Of Address">default text</textarea>
+                </div>
+            </div>
+
+            <!--  PhoneNumber -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">PhoneNumber</label>
+                <div class="col-md-4">
+                    <input asp-for="@Model.PhoneNumber" type="text" class="form-control input-md">
+
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">GiftWrap</label>
+                <div class="col-md-4">
+                    <input type="checkbox" asp-for="@Model.GiftWrap" class="custom-checkbox">
+                </div>
+            </div>
+
+            <!-- complete Order -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="singlebutton"></label>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">Complete Order</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>*@

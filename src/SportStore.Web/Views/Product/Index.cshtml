@@ -1,0 +1,89 @@
+﻿@model SportStore.Web.Models.ProductListViewModel
+
+
+@Html.Partial("_carousel")
+
+<hr class="hr-primary" />
+
+<div class="products-view-all">
+    <form class="post-list" asp-action="Index" asp-controller="Product">
+        <input type="hidden" value="">
+
+        <div class="clearfix">
+            <article class="navbar-form navbar-left p-0 m-0 ml-b">
+                <div class="form-group">
+                    <label>Per Page:</label>
+                    <select name="ItemsPerPage" class="form-control">
+                        <option value="3">3</option>
+                        <option value="6">6</option>
+                        <option value="9">9</option>
+                        <option value="12">12</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Order By: </label>
+
+                    <select class="form-control post_sort m-b">
+                        <option value="ASC">ASC</option>
+                        <option value="DESC">DESC</option>
+                    </select>
+                </div>
+                <input value="Filter" type="submit" class="btn btn-info post_search_submit m-b">
+            </article>
+        </div>
+    </form>
+</div>
+
+<hr>
+<div class="clearfix">
+    <div class="pagination-container clearfix"><br class="clear"></div>
+    <div class="pagination-nav"></div>
+</div>
+
+
+
+
+<div class="col-md-10" id="content">
+
+    @Html.Partial("_ProductSummery", Model.Products)
+</div>
+<div class="col-md-2" id="content">
+    
+    @await Component.InvokeAsync("Categories", new { categoryId = (Model.Category == null) ? 0 : Model.Category.ID, itemsPerPage = Model.PagingInfo.ItemsPerPage })
+</div>
+<div class="col-md-8">
+    <hr>
+    <ul class="pagination" id="paging">
+    </ul>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        debugger;
+        var totalPages = '@Model.PagingInfo.TotalPages';
+        var currentPage = '@Model.PagingInfo.CurrentPage';
+        var itemPerPage = parseInt('@Model.PagingInfo.ItemsPerPage');
+        var category = '@(Model.Category ==null ? 0: @Model.Category.ID)';
+
+      
+
+        for (var i = 1; i <= totalPages; i++) {
+            //This is irrational and messy code dont try this at home,, there are betther ways !!!
+            if (i == currentPage)
+            {
+                var button = "<li class='active'><a class='active' href='/Products/Page" + i + "?ItemsPerPage=" + itemPerPage + "&categoryId=" + category+"'>" + i + "</a></li>"; }
+            else
+            { var button = "<li><a href='/Products/Page" + i + "?ItemsPerPage=" + itemPerPage +"&categoryId="+category+"'>" + i + "</a></li>";}
+
+            $("#paging").append(button);
+            }
+
+    });
+
+</script>
+
+
+
+

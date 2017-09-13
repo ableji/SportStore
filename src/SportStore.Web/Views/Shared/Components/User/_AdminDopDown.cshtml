@@ -1,0 +1,11 @@
+﻿@model string
+
+
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user"></i> @Model <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+        <li><a asp-action="Index" asp-controller="Admin"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a asp-action="SignOut" asp-controller="Account"><i class="fa fa-sign-out"></i> Logout</a></li>
+
+    </ul>
+</li>

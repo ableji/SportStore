@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Order>
+
+
+<table id="tblOrder" class="table table-bordered ">
+
+    <thead>
+        <tr>
+
+            <th>Name</th>
+            <th>PhoneNumber</th>
+            <th>Address</th>
+            <th>OrderDate</th>
+            <th colspan="2">Details</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var order in Model)
+            {
+
+                <tr style="background-color:whitesmoke">
+
+                    <td></td>
+
+                    <td>@*order.User.PhoneNumber*@</td>
+                    <td>@*@order.User.CityId*@</td>
+                    <td>@*@order.InsertedDate.ToString("yyyy/MM/dd")*@</td>
+                    <td>Product</td>
+                    <td>Quantiry</td>
+                    <td><a class="btn btn-success btn-sm" role="button" onclick="ShipOrder(@order.ID)">Ship</a></td>
+
+                </tr>
+
+
+                foreach (var item in order.CartItems)
+                {
+                    <tr>
+                        <td colspan="4"></td>
+                        <td>@item.Product.ProductName</td>
+                        <td>@item.Quantity</td>
+                    </tr>
+
+                }
+
+
+            }
+
+        }
+    </tbody>
+
+</table>
+
+
+
+<script type="text/javascript">
+
+
+    function ShipOrder(id) {
+
+        
+        var action = '@Url.Action("ShipOrder", "Admin")';
+        $.ajax({
+            url: action,
+            type: 'Json',
+            data: { OrderId: id },
+
+            success: function (response) {
+                //I want to use this response  to be displayed on the same page.
+                $('#tblOrder').html(response);
+            },
+            error: function () { // if error occured
+                alert('Error:');
+            }
+
+
+        });
+    }
+
+</script>

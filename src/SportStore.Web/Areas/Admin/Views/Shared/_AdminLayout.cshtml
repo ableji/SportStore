@@ -1,0 +1,241 @@
+﻿<html>
+
+<head>
+
+    @*jquery*@
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+    @*Bootstrap*@
+    <link href="~/css/Bootstrap-Material.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+    @*AdminPanel*@
+    <link href="~/css/Admin.css" rel="stylesheet" />
+
+    @*fontawesome*@
+    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    @RenderSection("header", false)
+</head>
+
+
+<body>
+
+
+    <nav class="navbar navbar-inverse navbar-static-top" style="color:Background:blueviolet">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
+                    MENU
+                </button>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    Administrator
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            Account
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+
+                            <li><a href="/Account/Signout">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container-fluid main-container">
+
+        <div class="col-md-2 sidebar">
+            <div class="row">
+                <!-- uncomment code for absolute positioning tweek see top comment in css -->
+                <div class="absolute-wrapper"> </div>
+                <!-- Menu -->
+                <div class="side-menu">
+                    <nav class="navbar navbar-default" role="menu">
+
+                        <!-- Main Menu -->
+                        <h5>
+                            <div class="side-menu-container">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="/Admin/Index"><span class="fa fa-dashboard"></span> Dashboard</a></li>
+
+
+                                    <li class="panel panel-default" id="dropdown">
+                                        <a data-toggle="collapse" href="#ordersdropdown-lvl1">
+                                            <span class="fa fa-cog"></span> Orders <span class="caret"></span>
+                                        </a>
+                                        <!-- Dropdown level 1 -->
+                                        <div id="ordersdropdown-lvl1" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <ul class="nav navbar-nav">
+                                                    <li><a href="/Admin/PendingOrders">Pendig Orders</a></li>
+                                                    <li><a href="/Admin/ShipedOrders">Shiped Orders</a></li>
+
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+                                    <li><a href="/admin/Products"><span class="fa fa-barcode"></span> Products</a></li>
+                                    <li><a href="/Admin/ProductCategories"><span class="fa fa-list"></span> ProductCategories</a></li>
+                                    <!-- Dropdown-->
+                                    <li class="panel panel-default" id="dropdown">
+                                        <a data-toggle="collapse" href="#settingdropdown-lvl1">
+                                            <span class="fa fa-cog"></span> Setting <span class="caret"></span>
+                                        </a>
+                                        <!-- Dropdown level 1 -->
+                                        <div id="settingdropdown-lvl1" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <ul class="nav navbar-nav">
+                                                    <li><a href="#">Banner</a></li>
+                                                    <li><a href="#">SideBar</a></li>
+                                                    <li><a href="#">SpecialProducts</a></li>
+                                                    <!-- Dropdown level 2 -->
+                                                    @*<li class="panel panel-default" id="dropdown">
+                                                        <a data-toggle="collapse" href="#dropdown-lvl2">
+                                                            <span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
+                                                        </a>
+                                                        <div id="dropdown-lvl2" class="panel-collapse collapse">
+                                                            <div class="panel-body">
+                                                                <ul class="nav navbar-nav">
+                                                                    <li><a href="#">Link</a></li>
+                                                                    <li><a href="#">Link</a></li>
+                                                                    <li><a href="#">Link</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </li>*@
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+                                    <li><a href="/Admin/Users"><span class="fa fa-users"></span> Users</a></li>
+                                    <li><a href="#"><span class="fa fa-inbox"></span> Messages</a></li>
+
+
+
+                                </ul>
+                            </div><!-- /.navbar-collapse -->
+
+                        </h5>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-10 content">
+
+            @RenderBody()
+        </div>
+
+
+        <footer class="pull-left footer">
+            <p class="col-md-12">
+                <hr class="divider">
+                Copyright &COPY; 2015 <a href="http://www.pingpong-labs.com">Gravitano</a>
+            </p>
+        </footer>
+    </div>
+
+
+    <script>
+
+    $(function () {
+        $('.navbar-toggle-sidebar').click(function () {
+            $('.navbar-nav').toggleClass('slide-in');
+            $('.side-body').toggleClass('body-slide-in');
+            $('#search').removeClass('in').addClass('collapse').slideUp(200);
+        });
+
+        $('#search-trigger').click(function () {
+            $('.navbar-nav').removeClass('slide-in');
+            $('.side-body').removeClass('body-slide-in');
+            $('.search-input').focus();
+        });
+    });
+
+
+
+
+
+
+
+    @*function LoadProducts() {
+
+
+        var action = '@Url.Action("Products", "Admin")';
+        $.ajax({
+            url: action,
+            type: 'Json',
+
+            success: function (response) {
+
+                debugger;
+                $("#bodyContainer").html(response);
+
+            },
+            error: function () {
+                alert('Error');
+            }
+
+        });
+
+    }
+
+
+
+
+    function LoadOrders() {
+
+
+        var action = '@Url.Action("Orders", "Admin")';
+        $.ajax({
+            url: action,
+            type: 'Json',
+
+            success: function (response) {
+
+
+                $("#bodyContainer").html(response);
+
+            },
+            error: function () {
+                alert('Error');
+            }
+
+        });
+
+    }*@
+
+
+
+    </script>
+
+    @RenderSection("scripts", false)
+
+
+</body>
+
+
+</html>
