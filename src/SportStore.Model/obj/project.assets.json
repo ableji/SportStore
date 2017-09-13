@@ -9541,11 +9541,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "E:\\Ablfzl\\Projects\\SportStore\\SportStore.Model\\SportStore.Model.csproj",
+      "projectUniqueName": "E:\\Dev\\GitHub\\SportStore\\src\\SportStore.Model\\SportStore.Model.csproj",
       "projectName": "SportStore.Model",
-      "projectPath": "E:\\Ablfzl\\Projects\\SportStore\\SportStore.Model\\SportStore.Model.csproj",
+      "projectPath": "E:\\Dev\\GitHub\\SportStore\\src\\SportStore.Model\\SportStore.Model.csproj",
       "packagesPath": "C:\\Users\\ablfzl\\.nuget\\packages\\",
-      "outputPath": "E:\\Ablfzl\\Projects\\SportStore\\SportStore.Model\\obj\\",
+      "outputPath": "E:\\Dev\\GitHub\\SportStore\\src\\SportStore.Model\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ablfzl\\AppData\\Roaming\\NuGet\\NuGet.Config",

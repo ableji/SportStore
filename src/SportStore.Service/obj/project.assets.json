@@ -9916,11 +9916,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "E:\\Ablfzl\\Projects\\SportStore\\SportStore.Service\\SportStore.Service.csproj",
+      "projectUniqueName": "E:\\Dev\\GitHub\\SportStore\\src\\SportStore.Service\\SportStore.Service.csproj",
       "projectName": "SportStore.Service",
-      "projectPath": "E:\\Ablfzl\\Projects\\SportStore\\SportStore.Service\\SportStore.Service.csproj",
+      "projectPath": "E:\\Dev\\GitHub\\SportStore\\src\\SportStore.Service\\SportStore.Service.csproj",
       "packagesPath": "C:\\Users\\ablfzl\\.nuget\\packages\\",
-      "outputPath": "E:\\Ablfzl\\Projects\\SportStore\\SportStore.Service\\obj\\",
+      "outputPath": "E:\\Dev\\GitHub\\SportStore\\src\\SportStore.Service\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ablfzl\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9937,8 +9937,8 @@
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {
-            "E:\\Ablfzl\\Projects\\SportStore\\SportStore.Model\\SportStore.Model.csproj": {
-              "projectPath": "E:\\Ablfzl\\Projects\\SportStore\\SportStore.Model\\SportStore.Model.csproj"
+            "E:\\Dev\\GitHub\\SportStore\\src\\SportStore.Model\\SportStore.Model.csproj": {
+              "projectPath": "E:\\Dev\\GitHub\\SportStore\\src\\SportStore.Model\\SportStore.Model.csproj"
             }
           }
         }

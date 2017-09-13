@@ -5624,11 +5624,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "E:\\Ablfzl\\Projects\\SportStore\\SportStore.test\\SportStore.test.csproj",
+      "projectUniqueName": "E:\\Dev\\GitHub\\SportStore\\src\\SportStore.test\\SportStore.test.csproj",
       "projectName": "SportStore.test",
-      "projectPath": "E:\\Ablfzl\\Projects\\SportStore\\SportStore.test\\SportStore.test.csproj",
+      "projectPath": "E:\\Dev\\GitHub\\SportStore\\src\\SportStore.test\\SportStore.test.csproj",
       "packagesPath": "C:\\Users\\ablfzl\\.nuget\\packages\\",
-      "outputPath": "E:\\Ablfzl\\Projects\\SportStore\\SportStore.test\\obj\\",
+      "outputPath": "E:\\Dev\\GitHub\\SportStore\\src\\SportStore.test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
